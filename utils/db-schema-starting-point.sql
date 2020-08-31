@@ -19,8 +19,7 @@ DROP TABLE IF EXISTS `urls`;
 CREATE TABLE `urls` (
   `encrypted_url` varchar(255) NOT NULL,
   `encrypted_key` varchar(255) NOT NULL,
-  `iv` varchar(100) NOT NULL,
-  UNIQUE KEY `hashed_url` (`encrypted_key`)
+  `iv` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -30,7 +29,7 @@ CREATE TABLE `urls` (
 
 LOCK TABLES `urls` WRITE;
 /*!40000 ALTER TABLE `urls` DISABLE KEYS */;
-INSERT INTO `urls` VALUES ('2af917ce7232e53d10b0864b10bef0cea7aeb8189c70daca47a40513cc7a3993','3031323334353637383930313233343536373839303132333435363738393031','cdf74ba6cb699a0d158c96f61471da83');
+INSERT INTO `urls` VALUES ('6ca4ed96388c699e7e9f60ab7a1c6e4b','$2b$12$5Vfhel/S1JSdBk0HZmz4FevWJHLXcsWbvMJkvS90aeJY8LwwumJ9u','35893be2514061da7fb45eb8913e3228'),('701f85935a90cc9f7d58ac4d667bfddbbf932db8f6fcccc499b3bf452bed72da','$2b$12$84unRJOmvd1ce8Vbd9cMc.vPuG/Csl2SO13iWVw6fczm0ZNzZa7G.','d642de5ef18ba51b4c36c3808ac66559');
 /*!40000 ALTER TABLE `urls` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
