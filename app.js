@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({extended : true}))
 
 //test route
 app.get('/', async (req, res) => {
-    res.render('landing')
+    res.render('landing', {hashedUrl: null})
 })
 
 
@@ -24,11 +24,11 @@ app.post('/encryptUrl', async (req, res) => {
     const key = req.body.urlKey
     const encryptedUrl = await encrypt(url, key)
     console.log(encryptedUrl)
-    res.send("Successfully received URL and key!")
+    res.render('landing', {hashedUrl: encryptedUrl})
 })
 
-app.get('/decryptUrl', async (req, res) => {
-    res.render('decrypt')
+app.get('/:hashId', async (req, res) => {
+    res.render('decrypt', {encryptedUrl: req.params.hashId})
 })
 
 app.post('/decryptUrl', async (req, res) => {

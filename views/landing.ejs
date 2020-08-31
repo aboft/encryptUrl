@@ -34,6 +34,11 @@
                 </div>
                 <button type="submit" class="btn btn-outline-primary">Encrypt</button>
             </form>
+            <% if (hashedUrl) { %>
+                <h1 class="mt-4">Below is your encrypted URL.</h1> 
+                <p class="mt-4">Be sure to share your key to only those you trust.</p>
+                <a href="<%= 'http://127.0.0.1:3001/' + hashedUrl.encryptedData %></a>"><%= "http://127.0.0.1:3001/" + hashedUrl.encryptedData %></a>
+            <% } %>
         </div>
 
     </div>
