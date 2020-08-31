@@ -3,12 +3,11 @@ const bcrypt = require('bcrypt')
 const knex = require('./dbConnection')
 const algorithm = 'aes-256-cbc';
 const keySize = 32;
-const salt = crypto.randomBytes(32);
-const iv = crypto.randomBytes(16);
-
 
 async function encrypt(text, password) {
     try {
+        const salt = crypto.randomBytes(32);
+        const iv = crypto.randomBytes(16);
         const key = crypto.scryptSync(password, salt, keySize);
         const cipher = crypto.createCipheriv(algorithm, key, iv);
         let encrypted = cipher.update(text);
