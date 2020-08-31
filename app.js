@@ -5,6 +5,7 @@ require('dotenv').config()
 const app = express()
 const encrypt = require('./utils/encrypt')
 const decrypt = require('./utils/decrypt')
+const knex = require('./utils/dbConnection')
 const port = process.env.PORT
 
 
@@ -28,7 +29,14 @@ app.post('/encryptUrl', async (req, res) => {
 })
 
 app.get('/:hashId', async (req, res) => {
-    res.render('decrypt', {encryptedUrl: req.params.hashId})
+    const hashId = req.params.hashId
+    const idExists = await knex('urls').select('encrypted_url').where({encrypted_url: hashId}).from('urls')
+    if (idExists.length > 0) {
+        res.render('decrypt', {encryptedUrl: hashId})
+    } else {
+        res.redirect(301, '/')
+    }
+    
 })
 
 app.post('/decryptUrl', async (req, res) => {
