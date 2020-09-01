@@ -15,7 +15,7 @@ const port = process.env.PORT
 app.set('view engine', 'ejs')
 app.use(express.static("public"))
 app.use(bodyParser.urlencoded({extended : true}))
-app.use(favicon(path.join(__dirname, 'static', 'favicon.ico')))
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
 
 //test route
 app.get('/', async (req, res) => {
