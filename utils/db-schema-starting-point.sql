@@ -19,21 +19,11 @@ DROP TABLE IF EXISTS `urls`;
 CREATE TABLE `urls` (
   `encrypted_url` varchar(255) NOT NULL,
   `encrypted_key` varchar(255) NOT NULL,
-  `iv` varchar(100) NOT NULL
+  `iv` varchar(100) NOT NULL,
+  `salt` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `urls`
---
-
-LOCK TABLES `urls` WRITE;
-/*!40000 ALTER TABLE `urls` DISABLE KEYS */;
-INSERT INTO `urls` VALUES ('6ca4ed96388c699e7e9f60ab7a1c6e4b','$2b$12$5Vfhel/S1JSdBk0HZmz4FevWJHLXcsWbvMJkvS90aeJY8LwwumJ9u','35893be2514061da7fb45eb8913e3228'),('701f85935a90cc9f7d58ac4d667bfddbbf932db8f6fcccc499b3bf452bed72da','$2b$12$84unRJOmvd1ce8Vbd9cMc.vPuG/Csl2SO13iWVw6fczm0ZNzZa7G.','d642de5ef18ba51b4c36c3808ac66559');
-/*!40000 ALTER TABLE `urls` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
-
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
 /*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
