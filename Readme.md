@@ -18,3 +18,4 @@ git pull
 cd encryptUrl
 npm i
 ```
+The database table can be created with `utils/db-schema-starting-point.sql`.
