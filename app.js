@@ -16,7 +16,7 @@ app.use(bodyParser.urlencoded({extended : true}))
 
 //test route
 app.get('/', async (req, res) => {
-    res.render('landing', {hashedUrl: null})
+    res.render('landing', {hashedUrl: false, errorMessage: false})
 })
 
 
@@ -25,25 +25,27 @@ app.post('/encryptUrl', async (req, res) => {
     const key = req.body.urlKey
     const encryptedUrl = await encrypt(url, key)
     console.log(encryptedUrl)
-    res.render('landing', {hashedUrl: encryptedUrl})
+    res.render('landing', {hashedUrl: encryptedUrl, errorMessage: false})
 })
 
 app.get('/:hashId', async (req, res) => {
     const hashId = req.params.hashId
     const idExists = await knex('urls').select('encrypted_url').where({encrypted_url: hashId}).from('urls')
     if (idExists.length > 0) {
-        res.render('decrypt', {encryptedUrl: hashId})
+        res.render('decrypt', {encryptedUrl: hashId, errorMessage: false})
     } else {
-        res.redirect(301, '/')
+        res.render('landing', {hashedUrl: false, errorMessage: "Unable to locate URL."} )
     }
     
 })
 
-app.post('/decryptUrl', async (req, res) => {
-    const { text, key } = req.body
-    const decryptUrl = await decrypt(text, key)
+app.post('/:hashId', async (req, res) => {
+    const { hashedUrl, key } = req.body
+    const decryptUrl = await decrypt(hashedUrl, key)
     if (decryptUrl) res.redirect(301, decryptUrl.startsWith('http') ? decryptUrl : 'http://'+decryptUrl)
-    else res.render('decrypt', {encryptedUrl: text, decrypt_fail: true})
+    else { 
+        res.render("decrypt", {encryptedUrl: hashedUrl, errorMessage: "Unable to decrypt URL."})
+    }
 })
 
 

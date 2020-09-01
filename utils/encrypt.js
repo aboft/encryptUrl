@@ -12,15 +12,18 @@ async function encrypt(text, password) {
         const cipher = crypto.createCipheriv(algorithm, key, iv);
         let encrypted = cipher.update(text);
         encrypted = Buffer.concat([encrypted, cipher.final()]);
+        const storedUrl = encrypted.toString('base64').replace(/\//g,'_').replace(/\+/g, '-')
         const keyHash = await bcrypt.hash(password, 12);
         await knex('urls').insert({
-            encrypted_url: encrypted.toString('hex'),
+            encrypted_url: storedUrl,
             encrypted_key: keyHash,
             iv: iv.toString('hex'),
             salt: salt.toString('hex')
         })
-        return { iv: iv.toString('hex'), encryptedData: encrypted.toString('hex') };
+        console.log(encrypted)
+        return { iv: iv.toString('hex'), encryptedData: storedUrl };
     } catch (e) {
+        console.log(e)
         return `Unable to encrypt provided URL.`
     }
 }
