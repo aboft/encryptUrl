@@ -17,7 +17,8 @@
     "ejs": "^3.1.5",
     "express": "^4.17.1",
     "knex": "^0.21.5",
-    "mysql": "^2.18.1"
+    "mysql": "^2.18.1",
+    "serve-favicon": "^2.5.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.4"
