@@ -21,7 +21,7 @@ async function encrypt(text, password) {
             salt: salt.toString('hex')
         })
         console.log(encrypted)
-        return { iv: iv.toString('hex'), encryptedData: storedUrl };
+        return { iv: iv.toString('hex'), encryptedData: storedUrl, key: password };
     } catch (e) {
         console.log(e)
         return `Unable to encrypt provided URL.`

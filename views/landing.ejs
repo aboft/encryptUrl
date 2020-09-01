@@ -23,9 +23,9 @@
     <div class="container">
         <div class="d-flex flex-column justify-content-center">
             <% if (errorMessage) { %>
-                <div class="alert alert-danger mt-3" role="alert">
-                    <%= errorMessage %>
-                </div>
+            <div class="alert alert-danger mt-3" role="alert">
+                <%= errorMessage %>
+            </div>
             <% } %>
             <form class="mt-3" action="/encryptUrl" method="POST">
                 <div class="form-group">
@@ -40,9 +40,18 @@
                 <button type="submit" class="btn btn-outline-primary">Encrypt</button>
             </form>
             <% if (hashedUrl) { %>
-                <h1 class="mt-4">Below is your encrypted URL.</h1> 
-                <p class="mt-4">Be sure to share your key to only those you trust.</p>
-                <a href="<%= 'http://url.encrypt.se/' + hashedUrl.encryptedData %>"><%= "http://url.encrypt.se/" + hashedUrl.encryptedData %></a>
+            <div class="media mt-5 border border-primary p-2 rounded-top ">
+                <img src="logo.svg" style="width:3em" class="mr-3" alt="Encrypt URL Image">
+                <div class="media-body">
+                    <div>
+                        <h5 class="mt-1">Encrypted URL</h5>
+                        <p class="mt-2 mb-0">Be sure to share your key to only those you trust.</p>
+                        <p class="mt-0">Key: <%= hashedUrl.key %></p>
+                        <hr>
+                    </div>
+                    <a class="text-decoration-none text-center" href="<%= 'http://url.encrypt.se/' + hashedUrl.encryptedData %>"><%= "http://url.encrypt.se/" + hashedUrl.encryptedData %></a>
+                </div>
+            </div>
             <% } %>
         </div>
 
