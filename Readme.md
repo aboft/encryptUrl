@@ -10,7 +10,7 @@ URL shortener, with the advantage of encryption and password protection. All
 information is securely stored as well.
 
 ## Hosted Version
-Currently accessible at [url.encrypt.se](http://url.encrypt.se/).
+Currently accessible at [url.encrypt.se](https://url.encrypt.se/).
 
 ## Local installation
 ```
