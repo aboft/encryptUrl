@@ -5,6 +5,7 @@ const algorithm = 'aes-256-cbc';
 // const key = crypto.randomBytes(32);
 
 async function decrypt(hashedUrl, password) {
+    password = password.trim()
     // const hashedKey = await bcrypt.hash(keyDec, 12)
     const getKeys = await knex('urls').select('iv', 'encrypted_key', 'salt').where({
         encrypted_url: hashedUrl,

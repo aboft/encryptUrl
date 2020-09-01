@@ -6,6 +6,8 @@ const keySize = 32;
 
 async function encrypt(text, password) {
     try {
+        text = text.trim()
+        password = password.trim()
         const salt = crypto.randomBytes(32);
         const iv = crypto.randomBytes(16);
         const key = crypto.scryptSync(password, salt, keySize);
