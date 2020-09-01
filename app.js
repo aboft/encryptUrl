@@ -6,6 +6,8 @@ const app = express()
 const encrypt = require('./utils/encrypt')
 const decrypt = require('./utils/decrypt')
 const knex = require('./utils/dbConnection')
+const favicon = require('serve-favicon')
+const path = require('path')
 const port = process.env.PORT
 
 
@@ -13,6 +15,7 @@ const port = process.env.PORT
 app.set('view engine', 'ejs')
 app.use(express.static("public"))
 app.use(bodyParser.urlencoded({extended : true}))
+app.use(favicon(path.join(__dirname, 'static', 'favicon.ico')))
 
 //test route
 app.get('/', async (req, res) => {
