@@ -43,7 +43,7 @@ app.post('/decryptUrl', async (req, res) => {
     const { text, key } = req.body
     const decryptUrl = await decrypt(text, key)
     if (decryptUrl) res.redirect(301, decryptUrl.startsWith('http') ? decryptUrl : 'http://'+decryptUrl)
-    else res.send("Unable to decrypt.")
+    else res.render('decrypt', {encryptedUrl: text, decrypt_fail: true})
 })
 
 

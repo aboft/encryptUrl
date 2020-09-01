@@ -31,6 +31,15 @@
                     <input type="password" class="form-control" name="key">
                     <small class="form-text text-muted">Only individuals with this key can decrypt your URL.</small>
                 </div>
+                <% if (locals.decrypt_fail) { %>
+                    <script>
+                      let encryptedUrl = '<%- encryptedUrl %>';
+                      window.history.pushState("", "", '/' + encryptedUrl);
+                    </script>
+                <div id="decrypt-fail" class="alert alert-danger" role="alert">
+                    Decrypt failed - wrong key?
+                </div>
+                <% } %>
                 <button type="submit" class="btn btn-outline-primary">Decrypt</button>
             </form>
         </div>
