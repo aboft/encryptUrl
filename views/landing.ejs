@@ -7,6 +7,7 @@
     <link rel="icon" href="logo.svg">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
     <title>Encrypt URL</title>
 </head>
 
@@ -47,7 +48,7 @@
                     <div>
                         <h5 class="mt-1">Encrypted URL</h5>
                         <p class="mt-2 mb-0">Be sure to share your key to only those you trust.</p>
-                        <p class="mt-0">Key: <%= hashedUrl.key %></p>
+                        <p class="mt-0">Key: <span class="spoiler"><%= hashedUrl.key %></span></p>
                         <hr>
                     </div>
                     <a class="text-decoration-none text-center" href="<%= 'http://url.encrypt.se/' + hashedUrl.encryptedData %>"><%= "http://url.encrypt.se/" + hashedUrl.encryptedData %></a>

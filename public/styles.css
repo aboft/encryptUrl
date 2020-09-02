@@ -1,0 +1,4 @@
+.spoiler { transition: color 0.5s, background-color 0.5s }
+.spoiler:not(:hover), .spoiler:not(:hover) * { background-color: black; color: black }
+.spoiler * { transition: color 0.5s, background-color 0.5s }
+.spoiler:not(:hover) * { background-color: black; color: black }
