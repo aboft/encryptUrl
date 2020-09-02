@@ -12,9 +12,10 @@ information is securely stored as well.
 ## Hosted Version
 Currently accessible at [url.encrypt.se](https://url.encrypt.se/).
 
-## Local installation
+## Local Installation
 ```
 git pull
 cd encryptUrl
 npm i
 ```
+The database table can be created with `utils/db-schema-starting-point.sql`.
