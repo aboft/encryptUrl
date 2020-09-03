@@ -6,6 +6,7 @@ const app = express()
 const encrypt = require('./utils/encrypt')
 const decrypt = require('./utils/decrypt')
 const knex = require('./utils/dbConnection')
+const constants = require('./utils/constants')
 const favicon = require('serve-favicon')
 const path = require('path')
 const port = process.env.PORT
@@ -28,7 +29,9 @@ app.post('/encryptUrl', async (req, res) => {
     const key = req.body.urlKey
     const encryptedUrl = await encrypt(url, key)
     console.log(encryptedUrl)
-    res.render('landing', {hashedUrl: encryptedUrl, iconColor: "green", errorMessage: false})
+    res.render('landing', {hashedUrl: encryptedUrl,
+      iconColor: constants.ICON_COLORS[Math.floor(Math.random() * constants.ICON_COLORS.length)],
+      errorMessage: false})
 })
 
 app.get('/:hashId', async (req, res) => {
