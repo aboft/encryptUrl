@@ -28,7 +28,7 @@ app.post('/encryptUrl', async (req, res) => {
     const key = req.body.urlKey
     const encryptedUrl = await encrypt(url, key)
     console.log(encryptedUrl)
-    res.render('landing', {hashedUrl: encryptedUrl, errorMessage: false})
+    res.render('landing', {hashedUrl: encryptedUrl, iconColor: "green", errorMessage: false})
 })
 
 app.get('/:hashId', async (req, res) => {
